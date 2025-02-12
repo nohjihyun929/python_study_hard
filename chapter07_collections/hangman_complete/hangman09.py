@@ -45,3 +45,7 @@ def play_hangman2() :
         # todo - 3 : display list의 모든 요소를 결합하여 문자열로 변환하세요.
         print(" ".join(display))
         print(stages[lives])
+
+
+
+'''
