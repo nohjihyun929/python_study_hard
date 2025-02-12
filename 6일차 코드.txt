@@ -1,0 +1,211 @@
+'''
+700원 짜리 음료수를 뽑을 수 있는 자판기 프로그램을 구현하시오. 돈을 넣으면 몇 잔의 음료수를 뽑을 수 있는지, 
+그리고 잔돈은 얼마인지 모든 경우의 수를 출력하도록 합니다.
+
+함수 정의
+- 반환값 : 없음(call1-4 중 어떤 유형일지 고려하세요)
+- 함수이름 : vending_machine()
+- 매개변수 : 정수 money
+
+코드 구성
+
+def vending_machine() : 
+ #함수 구현
+ 
+vending_machinne(3000)
+
+실행 예
+음료수 = 0개, 잔돈 = 3000원
+음료수 = 1개, 잔돈 = 2300원
+음료수 = 2개, 잔돈 = 1600원
+음료수 = 3개, 잔돈 = 900원
+
+my_money = 3000
+drink_price = 700
+# for 반복문 돌려서 실행 예와 같이 나오도록 하려면 어떻게 작성해야 할까요 ? -> f-string
+charge = 3000 - (700*음료수 개수)
+my_money를 기준으로 음료수를 살 수 있는 경우의 수를 고려하면 0~4개까지 반복문이 5번 들어가네요.
+for i in range()      # range() 함수 내에 들어가있는 argument의 자료형은 int여야 합니다. > 단순히 나눠서는 안되죠
+'''
+#
+# def vending_machine(int) :
+#     for a in range ((int//700) + 1) :
+#         print(f"음료수 = {a}개, 잔돈 = {int-(a*700)}원")
+#         a+=1
+#
+# vending_machine(6000)
+
+## 함수 없이 for 문으로만 작성
+# my_money = 3000
+# drink_price = 700
+# for i in range((my_money//drink_price) +1) :
+#     print(f"음료수 = {i}개, 잔돈 = {my_money-(drink_price*i)}")
+
+## 함수로 작성
+#return 타입 없으니까 print()로 마무리 지어놨습니다 / 매개변수 명이 통제되어 있으므로 vending_machine(money)형태로 작성.
+# def vending_machine(money) :
+#     for i in range(money//700 + 1) :
+#         print(f"음료수 = {i}개, 잔돈 = {money-(700*i)}")
+#
+# vending_machine(7000)
+
+'''
+예제 : 구구단 출력하기
+함수 정의 :
+함수 이름 : multiply
+매개 변수 : 정수 n
+리턴값 : 없음
+
+함수 호출 :
+multiply(dan)
+
+실행 예
+몇 단을 출력하시겠습니까? >>> 3
+3 x 1 = 3
+...
+3 x 9 = 27
+
+ctrl + shift + f 를 사용해서 구구단 출력하는 코드 찾아와서 (혹은 직접 작성하셔도 무방), 함수화시켜보세요.
+'''
+
+# def multiply(n = int(input("몇 단을 출력하시겠습니까? >>> "))) :
+#
+#     for i in range(1,10):
+#         print(f"{n} x {i} = {n*i}")
+
+# 함수 정의 -> call2 유형으로 작성했습니다. (매개변수 포함)
+# def multiply(n) :
+#     for i in range(1, 10, 1):  # range(시작값,종료값,증감값)
+#         print(f"{dan}x{i} = {dan * i}")
+#
+#
+# dan = int(input("몇 단을 출력하시겠습니까? >>> "))
+#
+# # 함수 호출
+# multiply(dan)
+
+# 함수 정의 -> call1 유형으로 작성할 때의 예시
+def multiply2() :
+    dan = int(input("몇 단을 출력하시겠습니까? >>> "))
+    for i in range(1,10,1) :
+        print(f"{dan} x {i} = {dan*i}")
+
+# print(dan) # 현재 상황에서 오류 발생 -> 함수를 정의만 하는 것은 사용한 게 아니기 때문에 변수에 해당하지 않음
+# dan = 3    # 그리고 structure를 확인한 결과 선언한 dan이 없음을 확인할  수 있음
+# print(dan)
+i = 3
+
+# call 1  유형을 호출
+multiply2()
+
+
+# 연습이 필요하신 분은 leap_year를 함수화시켜보시는 것을 추천합니다.
+
+
+'''
+Scope : 범위
+
+지역 변수 : 함수 내부에 정의된 변수
+전역 변수 : 함수 외부(main단계)에 정의된 변수
+'''
+
+# enemies = 1    #전역 변수
+#
+# def increase_enemies() :          #함수 정의 시작
+#     enemies = 2                   #같은 이름이긴 하지만 얘는 지역변수에 해당
+#     print(f"함수 내부의 적의 숫자는 {enemies}입니다.")
+#
+# increase_enemies()                #함수 호출
+# print(f"함수 외부의 적의 숫자는 {enemies}입니다.")
+
+#지역 변수 =/= 전역 변수 -> 그렇다보니까 변수명을 서로 다르게 짓는게 혼란을 피하는 방식
+
+# 함수 정의
+def drink_portion() :
+    potion_strength = 2
+    # print(potion_strength)
+
+# print(potion_strength)    #오류 발생합니다.
+# drink_portion()
+# print(potion_strength)      #오류가 발생
+#지역 변수가 선언되고, 이를 호출한다고 해서, 함수 내에 있는 변수가 전역에서 (main에서) 참조하는 것은 불가능합니다.
+
+# player_health = 10       #전역 변수
+#
+# #함수 정의
+# def game() :
+#     player_health = 6
+#     # 함수 내부에 함수 정의 -> jump 내에 turn_right 함수 사용했었습니다.
+#     # 얘는 정의된 함수를 함수 내에서 호출했는데, 여기서는 함수 내에 정의를 새로 함.
+#     # 자주 일어나지는 않습니다 -> 가독성 문제로
+#     def drink_portion() :
+#         # player_health += 2     #마찬가지로 전역에서 선언되고 초기화된 변수를
+#                                  #함수 내에서 조작하는 것은 불가능합니다.
+#         # 근데 무조건 불가능하냐면 그건 아닙니다.
+#         global player_health
+#         player_health += 2       #값을 바꿀 전역 변수 명을 쓰게 되면
+#                                  #함수 내에서 전역 변수의 값을 바꿀 수 있음.
+#         # 이상의 코드에서 생겨날 수 있는 잠재적인 문제점은 :
+#         # 함수의 호출 횟수에 따라 전역 변수의 값이 바뀌기 때문에
+#         # 전역 변수의 값을 정확히 알기 위해서는
+#         # 함수의 호출 횟수를 알아야 한다는 점입니다.
+#         # 이상을 이유로 함수가 전역 변수의 값을 바꾸는 이러한 코딩 방식은
+#         # 선호되지 않습니다.
+#     drink_portion()
+# game()
+# print(f"체력은 {player_health}입니다.")        #전역변수 값을 확인
+
+# game_level = 3
+# def create_enemy() :
+#     enemies = ['좀비','스켈레톤','에일리언']
+#     if game_level < 5 :
+#         new_enemy = enemies[0]
+#     print(new_enemy)
+
+# create_enemy()
+'''
+이상의 코드에서 생기는 문제점
+1. game_level 이라는 전역변수를 create_enemy()라는 함수의 정의 부분에서 사용하고 있음에도 오류 발생하지 않음.
+2. 함수 정의 내부의 if 절에서 new_enemy라는 변수를 선언 및 초기화 했음에도,
+    if 절 바깥에서(들여쓰기 참조) new_enemy를 참조했음에도 오류가 발생하지 않음.
+    
+    1.의 이유 : game_level이라는 전역변수의 값을 바꾸는게 아니라, 참조만  해서 True/False만 반환하기 때문에
+        오류 발생하지 않음. 
+    2.의 이유 : if /  while / for와 같이 콜론을 기준으로 들여쓰기가 있는 모든 코드 블록들은
+        지역 변수를 만드는 것으로 간주되지 않음 -> 지역 변수의 용어 정의에 주목할 필요가 있습니다. 
+'''
+'''
+컬렉션(collection) : 여러 값을 하나의 이름으로 묶어서 관리하는 자료형
+
+string의 경우 문자 하나 하나를 줄(str)로 묶어서 문자열로 출력하는데,
+예를 들어 '다수의 다른 string을 관리하는 방법은 무엇일까?'에 관한 대답
+
+여러 명의 프로필을 관리한다고 가정해보겠습니다.
+'''
+
+ahngeunsu = "이름 : 안근수\n나이 : 38\n직업: 파이썬 강사"   #\n하면 계행 이루어짐
+# print(ahngeunsu)
+
+kimrandom = "이름 : 김랜덤\n나이 : 20\n직업 : 학생"
+# print(kimrandom)
+
+'''
+한 명 저장하는 데에는 문제가 없을 수 있지만 매번 변수 하나에 이름, 나이, 직업 등을 한 명 추가할 때마다 
+정리하는 것인 비효율적이고 ,예를 들어서 ahngeunsu에서 직업만 조회하고 싶어도 전체 정보를 다 확인해야 합니다.
+
+그리고 주소를 추가한다고 가정했을 때에도 각 변수들을 전부 다 참조해서 수정해줘야 할 필요성이 있습니다.
+
+이상의 문제들을 한꺼번에 관리하기 위한 방식으로 모음(collection)을 사용합니다. 
+
+종류 :
+    1. list 리스트 : 추가/수정/삭제가 언제나 가능 / a = [1,2,3] 대괄호 사용
+    2. tuple 튜플 : 추가/수정/삭제가 불가능 / a = (1,2,3) 소괄호 사용
+    3. set 세트 : 중복된 값의 저장이 불가능 / a = {1,2,3} 중괄호 사용
+    4. dict 딕트(딕셔너리) : 키 + 값으로 관리 / a {"name":"안근수","age":38} 중괄호 사용
+
+
+1. list
+    여러 값을 저장할 때 가장 많이  사용. 자료형이 서로 다르더라도 하나의 리스트에 저장 가능:
+    하나의 배열(파이썬에서 리스트와 비슷한 개념)에 동일한 자료형만을 저장할 수 있는 C,Java에 비해 
+    python이 가지는 장점이라고 할 수 있음.
+'''

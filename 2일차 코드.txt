@@ -1,0 +1,233 @@
+'''
+산술 연산자
+1. +
+2. -
+3. *
+4. /
+5. % : 나머지
+6. // : 몫
+7. ** : 제곱
+'''
+print(2**4) #2^4
+#나누기 연산자 / 몫 연산자의 결과값 차이
+print(3/2) #결과값 : 1.5
+print(3//2) #결과값 : 1
+print(type(3/2)) #결과값 : <class 'float'>
+print(type(3//2)) #결과값 : <class 'int'>
+
+print(10%4)
+
+'''
+bmi_calc를 만들기 위한 사전 준비
+'''
+# age = input("당신의 나이는 몇 살입니까? >>>")
+# print(type(age))
+# print(f"당신은 내년에 {age+1}살이 됩니다.")
+'''
+input() 함수의 결과값은 언제나 str입니다. -> 즉, 수학 연산을 하기 위해서는 별도의 과정이 필요합니다.
+
+이때 필요한 함수가 '형변환 함수'입니다. (Conversion)
+'''
+
+# age1 = input("당신의 나이는 몇 살입니까? >>> ")
+# print(type(age1)) #결과값 : str
+# age1_int = int(age1) #str인 age1을 int로 자료형을 변환시켜서 age1_int라는 새로운 변수에 대입
+# print(type(age1_int))
+# print(f"당신은 내년에 {age1_int+1}살이 됩니다.") #여기서는 오류 발생 x
+'''
+자주 쓰이는 형변환 함수
+1. int() -> str 또는 float를 int로 변경 
+2. float() -> str 또는 int를 float으로 변경
+3. round() -> 반올림 해주는 함수
+'''
+# temp = int(3.8)
+# print(temp) #결과값 3 : 소수의 경우 버림을 한다
+# temp2 = float(4)
+# print(temp2) #결과값 4.0
+#
+# temp3 = round(3.8)
+# print(temp3)
+#
+# temp4 = round(5.3491285, 2) #괄호 첫번째 수를 소수점 둘째자리까지 표기
+# print(temp4)
+
+'''
+BMI 계산기를 작성합니다.
+
+1. 키(cm)를 입력 받아(input()를 쓰라는 의미) 변수 height에 저장합니다.
+height = input("당신의 키는 몇 cm입니까? >>> ")
+2. 몸무게(kg)를 입력 받아 변수 weight에 저장합니다.
+
+3. 몸무게/ (키(m)의 제곱)을 계산하면 bmi 지수가 나옵니다.
+4. bmi 지수를 int로 출력하세요. -> int() 함수 사용하라는 의미
+5. bmi 지수를 소수점 셋째자리에서 반올림하여 둘째자리까지 출력하세요. -> round() 함수 사용
+
+실행 예
+
+로고 출력하세요(구글에서 text to ascii art 검색하면 나옵니다.)
+당신의 키는 몇 cm입니까? >>>
+당신의 몸무게는 몇 kg입니까? >>>
+당신의 bmi 지수는 23입니다.
+당신의 bmi 지수는 23.xx입니다. 
+'''
+# print('''
+#
+# d8888b. .88b  d88. d888888b       .o88b.  .d8b.  db       .o88b. db    db db       .d8b.  d888888b  .d88b.  d8888b.
+# 88  `8D 88'YbdP`88   `88'        d8P  Y8 d8' `8b 88      d8P  Y8 88    88 88      d8' `8b `~~88~~' .8P  Y8. 88  `8D
+# 88oooY' 88  88  88    88         8P      88ooo88 88      8P      88    88 88      88ooo88    88    88    88 88oobY'
+# 88~~~b. 88  88  88    88         8b      88~~~88 88      8b      88    88 88      88~~~88    88    88    88 88`8b
+# 88   8D 88  88  88   .88.        Y8b  d8 88   88 88booo. Y8b  d8 88b  d88 88booo. 88   88    88    `8b  d8' 88 `88.
+# Y8888P' YP  YP  YP Y888888P       `Y88P' YP   YP Y88888P  `Y88P' ~Y8888P' Y88888P YP   YP    YP     `Y88P'  88   YD
+# '''
+# )
+# height = input("당신의 키는 몇 cm입니까? >>> ")
+# weight = input("당신의 몸무게는 몇 kg입니까? >>> ")
+# height = float(height)
+# height_m= height/100
+# weight = float(weight)
+# bmi = weight/height_m**2
+# bmi_round = round(bmi,2)
+# bmi_int = int(bmi)
+# print(f"당신의 bmi 지수는 {bmi_int}입니다.")
+# print(f"당신의 bmi 지수는 {bmi_round}입니다.")
+
+#-----------------------------------------------
+#예시 답안
+# height = float(input("당신의 키는 몇 cm입니까? >>> ")) /100 # 키 입력받고 바로 m로 변환
+# weight = float(input("당신의 몸무게는 몇 kg입니까? >>> "))
+# print(f"당신의 bmi지수는 {int(weight/(height**2))}입니다.")
+# print(f"당신의 bmi지수는 {round((weight/(height**2)),2)}입니다.")
+
+'''
+지시 사항
+
+사용자에게 전체 음식값($), 몇 %의 팁을 낼 것인지, 인원수를 입력받을 예정입니다.
+
+실행 예
+
+음식 가격은 얼마입니까? >>> $200
+몇 퍼센트(%)의 팁을 내실 예정입니까, 10, 12, 15% 중에서 선택하세요. >>> 10
+몇 명의 인원이 나누어 내나요? >>> 5
+
+당신이 내야할 전체 음식 금액은 $44.0달러입니다.
+'''
+
+# food = float(input("음식 가격은 얼마입니까? >>> $"))
+# percent = float(input("몇 퍼센트(%)의 팁을 내실 예정입니까, 10, 12, 15% 중에서 선택하세요. >>> "))
+# people = int(input("몇 명의 인원이 나누어 내나요? >>> "))
+#
+# percent = percent/100
+# total = (food*percent)+food
+# print(f"당신이 내야할 전체 음식 금액은 ${total/people}달러입니다.")
+
+#------------------------------------
+#예시 답안
+# percent 를 소수점으로 바꾸는 연산
+# percent = percent/100
+# tip = food*percent                            #팁 가격만 산출
+# total_price = food + tip                      #전체 음식 가격 산출
+# price_per_person = total_price/people         #인당 지불 금액 산출
+# price_per_person = round(price_per_person,2)
+# print(f"당신이 내야할 전체 음식 금액은 ${price_per_person}입니다.")
+
+#최대한 짧은 버전으로 작성하자면
+# food = float(input("음식 가격은 얼마입니까? >>> $"))
+# percent = float(input("몇 퍼센트(%)의 팁을 내실 예정입니까, 10, 12, 15% 중에서 선택하세요. >>> "))/100
+# people = int(input("몇 명의 인원이 나누어 내나요? >>> "))
+# print(f"당신이 내야할 전체 금액은 ${round(((food*(1+percent))/people),2)}입니다.")
+# print(f"당신이 내야할 전체 금액은 ${((food*(1+percent))/people):.2f}입니다.")
+# #38번 라인의 경우는 round()함수와 달리 어떤 상황에서도 소수점 둘재자리까지 표기되도록 강제하는 코드
+
+'''
+1. if문
+ if문은 조건이 참(True)일 대만 해당 블록의 코드를 실행합니다.
+'''
+age = 20
+# if age >= 19:
+#     print("성인입니다.") #if와 함께있는 조건문이 True일때만 7번 라인이 실행됩니다.
+'''
+if문에서 주의할 점 :
+ 1) if와 같은 라인에 작성된 코드는 True/False로 구분할 수  있어야함
+ 2) if와 같은 라인에 있는 조건문이 끝났을 대 콜론(:)으로 마무리
+ 3) python에서는 타 언어들과 달리 들여쓰기(indented writing)이 '매우' 중요.
+ 
+
+2. if-else 문
+    if문 다음에 else를 사용할 수 있는데, if가 참일 때 실행된다면, else는 거짓일 때 실행됨
+'''
+# age = 3
+# if age >=19:
+#     print("성인입니다.")
+# else:
+#     print("미성년자입니다.")
+'''
+이상의 코드에서 확인할 수 있는 것은 22번 라인의 print()는 if절에, 
+22번 라인의 print()는 else절에 종속되어 있음을 들여쓰기를 통해서 알 수 있다.
+if-else는 서로 반대이기 때문에 else절에는 굳이 조건식을 명시하지 않는다.
+
+3. if - elif - else 문
+ 여러 조건을 동시에 검사하기 위해서 사용하는 구조
+'''
+# age = 14
+# if age >= 19 :
+#     print("성인입니다.")
+# elif age >= 8 :
+#     print("학생입니다.")
+# else:
+#     print("미취학아동입니다.")
+
+'''
+이상의 코드에서 확인할 수 있는 점
+1) 첫 번째 조건은 False이지만,
+2) 두 번째 조건은 True이므로 35번 라인이 실행됨
+3) 이후 조건은 확인하지 않고 조건문 전체가 종료됨
+
+    if 조건문의 전체 형식 :
+if 조건식1:
+    실행문1
+(elif 조건식2:)         -> optional
+    (실행문2)
+(elif 조건식3:)
+    (실행문3)
+(else:)
+    (실행문4)
+
+4. 중첩 if문(Nested if)
+    조건문 내부에 또 다른 조건문을 사용할 수 있음. 다만 가독성이 떨어지는 편이라서
+    추후에 배우는 논리연산자와 함께 사용하는 편
+'''
+
+# age = 10
+# has_ticket = True
+# if age>= 19:
+#     #if문 내부에 다시 if문 작성 -> 중첩if문
+#     if has_ticket:
+#         print("영화관 입장이 가능합니다.")
+#     else:
+#         print("티켓을 구매하세요.")
+# else:
+#     print("미성년자는 출입할 수 없습니다.")
+
+'''
+5. 조건문에서 자주 쓰이는 연산자
+    비교 연산자 :
+        1) == : 같다
+        2) != : 같지 않다
+        3) > : 초과
+        4) < : 미만
+        5) >= : 이상
+        6) <= : 이하
+    논리 연산자 :
+        1) and : A and B : A와 B가 모두 참일 때 실행문 실행
+        2) or: A or B : A 혹은 B 중에 하나가 참이면 실행문 실행
+        3) not : if not A -> A가 false일 때 실행문 실행
+'''
+
+age = 25
+has_ticket = True
+
+#논리연산자를 적용한 중첩 if문의 축약
+if age >= 19 and has_ticket:
+    print("영화관 입장이 가능합니다.")
+else:
+    print("입장할 수 없습니다.")
